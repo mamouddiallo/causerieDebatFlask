@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index Page</title>
+</head>
+<body>
+	<h3>Profiles</h3>
+	<a href="/add_data">ADD</a>
+	<br>
+	<table>
+		<thead>
+			<th>Id</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Password</th>
+            <th>confirm_password</th>
+            <th>#</th>
+		</thead>
+		{% for data in profiles %}
+		<tbody>
+			<td>{{data.id}}</td>
+			<td>{{data.first_name}}</td>
+			<td>{{data.last_name}}</td>
+			<td>{{data.email}}</td>
+            <td>{{data.password}}</td>
+            <td>{{data.password_conf}}</td>
+			<td><a href="/delete/{{data.id}}" type="button">Delete</a></td>
+            <td><a href="{{url_for('update_profile', id=data.id)}}" type="button">Update</a></td>
+		</tbody>
+		{% endfor %}
+	</table>
+</body>
+</html>
